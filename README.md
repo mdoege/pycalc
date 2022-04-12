@@ -9,6 +9,7 @@ It works the same as the Python math module in interactive mode:
 * The imaginary unit j has a button. Note that not all Python math functions work with imaginary numbers, e.g. "exp" does not but "**2" does. Also "abs" is useful for imaginary numbers, e.g. "abs(3+4j)" = 5.
 * SCI displays the result in scientific notation, pressing "=" switches back to normal display.
 * The "e" button has multiple functions: As a variable, it is 2.718…; it is also used for entering numbers in scientific notation, e.g. 2e18; and it is the hex digit that equals 14.
+* You can get asin, acos, and atan by first typing "a" from the hex block and then sin/cos/tan.
 
 ![screenshot1](https://github.com/mdoege/pycalc/raw/master/pycalc.png "PyCalc screenshot")
 
