@@ -11,6 +11,8 @@ It works the same as the Python math module in interactive mode:
 * The "e" button has multiple functions: As a variable, it is 2.718… (see table below); it is also used for entering numbers in scientific notation, e.g. 2e18; and it is the hex digit that equals 14.
 * You can get asin, acos, and atan by first typing "a" from the hex block and then sin/cos/tan.
 
+### Physical constants
+
 The hex buttons (a to f) and "j" can also be used as these predefined variables (a, b) or constants:
 
 | Button | Equals |
@@ -22,6 +24,8 @@ The hex buttons (a to f) and "j" can also be used as these predefined variables 
 | e      | Euler's number 2.718… |
 | f      | gravitational constant in m³/(kg s) |
 | j      | astronomical unit (AU) in m |
+
+### Screenshot
 
 ![screenshot1](https://github.com/mdoege/pycalc/raw/master/pycalc.png "PyCalc screenshot")
 
