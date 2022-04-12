@@ -15,7 +15,7 @@ MAXLEN = 100            # maximum digits
 fn = "OCRA.otf"
 
 # button layout
-b = """0x hex( oct( bin( ** C
+bmap = """0x hex( oct( bin( ** C
 a exp( sin( cos( tan( log10(
 b pi abs( **2 sqrt( log(
 c deg( SCI ( ) /
@@ -47,7 +47,7 @@ cols = (
 )
 
 but = []
-for l in b.splitlines():
+for l in bmap.splitlines():
     bb = l.split()
     but.append(bb)
 
@@ -67,6 +67,16 @@ def cel(x):
     # Fahrenheit -> Celsius
     return (x - 32) * 5/9
 
+# Some predefined variables and constants:
+#  (e is defined in math module)
+a = 0     # last answer
+b = 0     # next to last answer
+c = 299792458   # speed of light in m/s
+d = 6.02214076e23 # Avogadro constant
+# e is Euler's number 2.718…
+f = 6.6743e-11  # gravitational constant in m³/(kg s)
+j = 1.495978707e11    # astronomical unit (AU) in m
+
 class PyCalc:
     def __init__(self):
         pygame.init()
@@ -80,6 +90,8 @@ class PyCalc:
         self.inp = ""
 
     def events(self):
+        global a, b
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT: self.running = False
             if event.type == pygame.VIDEORESIZE:
@@ -92,15 +104,17 @@ class PyCalc:
                 X, Y = x // boxx, y // boxy
                 if Y == 0 or Y > VSIZE - 1 or X > HSIZE - 1:
                     return
-                c = but[Y - 1][X]
-                if c == "=":
+                ci = but[Y - 1][X]
+                if ci == "=":
                     try:
                         self.inp = str(eval(self.inp))
+                        b = a
+                        a = eval(self.inp)
                     except:
                         self.inp += " *ERROR*"
-                elif c == "C":
+                elif ci == "C":
                     self.inp = ""
-                elif c == "SCI":
+                elif ci == "SCI":
                     try:
                         self.inp = "%e" % float(self.inp)
                     except:
@@ -145,6 +159,6 @@ class PyCalc:
         self.screen.blit(tr, (0, 0))
         pygame.display.flip()
 
-c = PyCalc()
-c.run()
+app = PyCalc()
+app.run()
 
