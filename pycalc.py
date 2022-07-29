@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Python calculator
+# Python scientific calculator
 
 import pygame
 from math import *
@@ -8,24 +8,24 @@ from math import *
 BACKGROUND = 0, 0, 0
 BORDER = 2
 RES = 600,495           # initial window size
-HSIZE, VSIZE = 6, 9     # button grid dimension
+HSIZE, VSIZE = 6, 9     # button grid dimension (top row is for display)
 MAXLEN = 100            # maximum digits
 
 # font name
 fn = "OCRA.otf"
 
 # button layout
-bmap = """0x hex( oct( bin( ** C
-a exp( sin( cos( tan( log10(
-b pi abs( **2 sqrt( log(
-c deg( SCI ( ) /
-d rad( 7 8 9 *
-e fah( 4 5 6 -
-f cel( 1 2 3 +
-0o 0b 0 . j ="""
+bmap = """0x hex( oct( bin( **    C
+          a  exp( sin( cos( tan(  log10(
+          b  pi   abs( **2  sqrt( log(
+          c  deg( SCI  (    )     /
+          d  rad( 7    8    9     *
+          e  fah( 4    5    6     -
+          f  cel( 1    2    3     +
+          0o 0b   0    .    j     ="""
 
-# color indices
-col_ind="""333312
+# color indices for buttons
+col_ind = """333312
 311111
 311111
 311114
@@ -36,7 +36,7 @@ col_ind="""333312
 
 col_ind = col_ind.splitlines()
 
-# RGB colors
+# RGB colors for each color index
 cols = (
 (0,0,0),
 (100,100,100),
@@ -46,12 +46,16 @@ cols = (
 (130,130,130),
 )
 
+# text colors and sizes
+button_rgb  = 255, 255, 255
+display_rgb = 255, 255, 0
+size_button = 25
+size_disp   = 45
+
 but = []
 for l in bmap.splitlines():
     bb = l.split()
     but.append(bb)
-
-#print(but)
 
 def deg(x):
     return degrees(x)
@@ -69,12 +73,12 @@ def cel(x):
 
 # Some predefined variables and constants:
 #  (e is defined in math module)
-a = 0     # last answer
-b = 0     # next to last answer
-c = 299792458   # speed of light in m/s
-d = 6.02214076e23 # Avogadro constant
-# e is Euler's number 2.718…
-f = 6.6743e-11  # gravitational constant in m³/(kg s)
+a = 0                 # last answer
+b = 0                 # next-to-last answer
+c = 299792458         # speed of light in m/s
+d = 6.02214076e23     # Avogadro constant
+                      # "e" is Euler's number 2.718…
+f = 6.6743e-11        # gravitational constant in m³/(kg s)
 j = 1.495978707e11    # astronomical unit (AU) in m
 
 class PyCalc:
@@ -84,8 +88,8 @@ class PyCalc:
         self.screen = pygame.display.set_mode(self.res, pygame.RESIZABLE)
         pygame.display.set_caption('PyCalc')
         self.screen.fill(BACKGROUND)
-        self.font = pygame.font.Font(fn, 25)
-        self.fontres = pygame.font.Font(fn, 45)
+        self.font = pygame.font.Font(fn, size_button)
+        self.fontres = pygame.font.Font(fn, size_disp)
         self.clock = pygame.time.Clock()
         self.inp = ""
 
@@ -105,21 +109,21 @@ class PyCalc:
                 if Y == 0 or Y > VSIZE - 1 or X > HSIZE - 1:
                     return
                 ci = but[Y - 1][X]
-                if ci == "=":
+                if ci == "=":       # evaluate expression
                     try:
                         self.inp = str(eval(self.inp))
                         b = a
                         a = eval(self.inp)
                     except:
                         self.inp += " *ERROR*"
-                elif ci == "C":
+                elif ci == "C":     # clear screen
                     self.inp = ""
-                elif ci == "SCI":
+                elif ci == "SCI":   # convert to scientific notation
                     try:
                         self.inp = "%e" % float(self.inp)
                     except:
                         pass
-                else:
+                else:               # or add button text to input
                     self.inp += but[Y - 1][X]
 
     def run(self):
@@ -143,11 +147,11 @@ class PyCalc:
                 if t[-1] == "(" and t != "(":
                     t = t[:-1]
                 if t != "#":
-                    tr = self.font.render(t, True, (255, 255, 255))
+                    tr = self.font.render(t, True, button_rgb)
                     ox = max(0, (boxx - tr.get_width()) // 2)
                     oy = max(0, (boxy - tr.get_height()) // 2)
                     self.screen.blit(tr, (x * boxx + BORDER + ox, y * boxy + BORDER + oy))
-        if len(self.inp) < MAXLEN:
+        if len(self.inp) < MAXLEN:  # check if maximum digits exceeded
             t = self.inp
         else:
             try:
@@ -155,7 +159,7 @@ class PyCalc:
                 t = self.inp
             except:
                 t = "*TOO LONG*"
-        tr = self.fontres.render(t, True, (255, 255, 0))
+        tr = self.fontres.render(t, True, display_rgb)
         self.screen.blit(tr, (0, 0))
         pygame.display.flip()
 
