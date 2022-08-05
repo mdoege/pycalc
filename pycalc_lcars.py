@@ -179,7 +179,7 @@ class PyCalc:
             except:
                 t = "*TOO LONG*"
         tr = self.fontres.render(t.upper(), True, display_rgb)
-        self.screen.blit(tr, (0, 0))
+        self.screen.blit(tr, (10, 0))
         pygame.display.flip()
 
 app = PyCalc()
