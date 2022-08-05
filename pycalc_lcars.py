@@ -6,7 +6,7 @@ import pygame
 from math import *
 
 BACKGROUND = 0, 0, 0
-BORDER = 4
+BORDER = 6
 RES = 760,600           # initial window size
 HSIZE, VSIZE = 6, 9     # button grid dimension (top row is for display)
 MAXLEN = 100            # maximum digits
@@ -167,7 +167,7 @@ class PyCalc:
     def update(self):
         self.screen.fill(BACKGROUND)
         boxx, boxy = self.res[0] // HSIZE, self.res[1] // VSIZE
-        LCW = boxx // 4
+        LCW = boxx // 6
         for y in range(1, VSIZE):
             for x in range(HSIZE):
                 ci = int(col_ind[y - 1][x])

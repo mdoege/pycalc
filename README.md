@@ -25,9 +25,11 @@ The hex buttons (a to f) and "j" can also be used as these predefined variables 
 | f      | gravitational constant in m³/(kg s) |
 | j      | astronomical unit (AU) in m |
 
-### Screenshot
+### Screenshots
 
-![screenshot](pycalc.png "PyCalc screenshot (dark/light/LCARS version)")
+![screenshot1](pycalc.png "PyCalc screenshot (dark/light versions)")
+
+![screenshot2](pycalc2.png "PyCalc screenshot (LCARS version)")
 
 ### License
 
