@@ -14,6 +14,15 @@ MAXLEN = 100            # maximum digits
 # font name
 fn = "Antonio-Regular.ttf"
 
+# sound files
+pygame.mixer.init()
+audio = {
+"key": pygame.mixer.Sound("key.wav"),
+"enter": pygame.mixer.Sound("enter.wav"),
+"clear": pygame.mixer.Sound("clear.wav"),
+"error": pygame.mixer.Sound("error.wav"),
+}
+
 # button layout
 bmap = """0x hex( oct( bin( **    C
           a  exp( sin( cos( tan(  log10(
@@ -114,17 +123,22 @@ class PyCalc:
                         self.inp = str(eval(self.inp))
                         b = a
                         a = eval(self.inp)
+                        audio["enter"].play()
                     except:
                         self.inp += " *ERROR*"
+                        audio["error"].play()
                 elif ci == "C":     # clear screen
                     self.inp = ""
+                    audio["clear"].play()
                 elif ci == "SCI":   # convert to scientific notation
                     try:
                         self.inp = "%e" % float(self.inp)
                     except:
                         pass
+                    audio["key"].play()
                 else:               # or add button text to input
                     self.inp += but[Y - 1][X]
+                    audio["key"].play()
 
     def run(self):
         self.running = True
