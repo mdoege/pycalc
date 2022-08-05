@@ -7,7 +7,7 @@ from math import *
 
 BACKGROUND = 0, 0, 0
 BORDER = 4
-RES = 600,495           # initial window size
+RES = 760,600           # initial window size
 HSIZE, VSIZE = 6, 9     # button grid dimension (top row is for display)
 MAXLEN = 100            # maximum digits
 
@@ -59,7 +59,7 @@ cols = (
 button_rgb  = 0, 0, 0
 display_rgb = 255,153,0
 size_button = 20
-size_disp   = 45
+size_disp   = 55
 
 but = []
 for l in bmap.splitlines():
