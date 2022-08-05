@@ -6,7 +6,7 @@ import pygame
 from math import *
 
 BACKGROUND = 0, 0, 0
-BORDER = 2
+BORDER = 4
 RES = 600,495           # initial window size
 HSIZE, VSIZE = 6, 9     # button grid dimension (top row is for display)
 MAXLEN = 100            # maximum digits
@@ -49,7 +49,7 @@ cols = (
 # text colors and sizes
 button_rgb  = 0, 0, 0
 display_rgb = 255,153,0
-size_button = 30
+size_button = 20
 size_disp   = 45
 
 but = []
@@ -153,7 +153,7 @@ class PyCalc:
                     t = t[:-1]
                 if t != "#":
                     tr = self.font.render(t.upper(), True, button_rgb)
-                    ox = max(0, (boxx - tr.get_width()) // 2)
+                    ox = max(0, boxx // 4)
                     oy = max(0, (boxy - tr.get_height()) // 2)
                     self.screen.blit(tr, (x * boxx + BORDER + ox, y * boxy + BORDER + oy))
         if len(self.inp) < MAXLEN:  # check if maximum digits exceeded
