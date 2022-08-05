@@ -71,6 +71,9 @@ cols = (
 (255,153,102),
 )
 
+# highlight color
+col_high = 255, 204, 153
+
 # text colors and sizes
 button_rgb  = 0, 0, 0
 display_rgb = 255,153,0
@@ -170,15 +173,23 @@ class PyCalc:
         LCW = boxx // 6
         for y in range(1, VSIZE):
             for x in range(HSIZE):
+                t = but[y - 1][x]
                 ci = int(col_ind[y - 1][x])
-                pygame.draw.rect(self.screen, cols[ci],
+                color = cols[ci]
+
+                # check for matching parentheses:
+                if t == ")":
+                    par = self.inp.count("(") - self.inp.count(")")
+                    if par > 0:
+                        color = col_high
+
+                pygame.draw.rect(self.screen, color,
                     [x * boxx + BORDER + LCW, y * boxy + BORDER,
                     boxx - 2 * BORDER - 2 * LCW, boxy - 2 * BORDER])
-                pygame.draw.ellipse(self.screen, cols[ci],
+                pygame.draw.ellipse(self.screen, color,
                     (x * boxx + BORDER, y * boxy + BORDER, 2 * LCW, boxy - 2 * BORDER))
-                pygame.draw.ellipse(self.screen, cols[ci],
+                pygame.draw.ellipse(self.screen, color,
                     (x * boxx - BORDER + boxx - 2 * LCW, y * boxy + BORDER, 2 * LCW, boxy - 2 * BORDER))
-                t = but[y - 1][x]
                 if t[-1] == "(" and t != "(":
                     t = t[:-1]
                 for a, b in subst:
