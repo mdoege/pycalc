@@ -27,7 +27,7 @@ The hex buttons (a to f) and "j" can also be used as these predefined variables 
 
 ### Screenshot
 
-![screenshot](pycalc.png "PyCalc screenshot (dark and light mode)")
+![screenshot](pycalc.png "PyCalc screenshot (dark/light/LCARS version)")
 
 ### License
 
