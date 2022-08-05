@@ -33,6 +33,22 @@ bmap = """0x hex( oct( bin( **    C
           f  cel( 1    2    3     +
           0o 0b   0    .    j     ="""
 
+# button text substitutions
+subst = (
+("/",   "DIV"),
+("*",   "MUL"),
+("-",   "SUB"),
+("+",   "ADD"),
+("=",   "ENTER"),
+("**",  "POW"),
+("**2", "SQ"),
+("C",   "CLEAR"),
+("j",   "IMAG"),
+("(",   "BEGIN"),
+(")",   "END"),
+(".",   "SEP"),
+)
+
 # color indices for buttons
 col_ind = """333312
 311111
@@ -165,6 +181,8 @@ class PyCalc:
                 t = but[y - 1][x]
                 if t[-1] == "(" and t != "(":
                     t = t[:-1]
+                for a, b in subst:
+                    if t == a: t = b
                 if t != "#":
                     tr = self.font.render(t.upper(), True, button_rgb)
                     ox = max(0, boxx // 4)
