@@ -51,7 +51,6 @@ subst = (
 
 # display text substitutions
 dsubst = (
-("**2", " ^ 2 "),
 ("**",  " ^ "),
 ("/",   " ÷ "),
 ("*",   " × "),
