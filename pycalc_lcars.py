@@ -49,6 +49,18 @@ subst = (
 (".",   "SEP"),
 )
 
+# display text substitutions
+dsubst = (
+("**2", " ^ 2 "),
+("**",  " ^ "),
+("/",   " ÷ "),
+("*",   " × "),
+("-",   " − "),
+("+",   " + "),
+("(",   " [ "),
+(")",   " ] "),
+)
+
 # color indices for buttons
 col_ind = """333312
 311111
@@ -114,7 +126,7 @@ class PyCalc:
         pygame.init()
         self.res = RES
         self.screen = pygame.display.set_mode(self.res, pygame.RESIZABLE)
-        pygame.display.set_caption('PyCalc')
+        pygame.display.set_caption('LCARS Calculator')
         self.screen.fill(BACKGROUND)
         self.font = pygame.font.Font(fn, size_button)
         self.fontres = pygame.font.Font(fn, size_disp)
@@ -144,7 +156,7 @@ class PyCalc:
                         a = eval(self.inp)
                         audio["enter"].play()
                     except:
-                        self.inp += " *ERROR*"
+                        self.inp += " ERROR"
                         audio["error"].play()
                 elif ci == "C":     # clear screen
                     self.inp = ""
@@ -206,9 +218,11 @@ class PyCalc:
                 self.inp = "%e" % float(self.inp)
                 t = self.inp
             except:
-                t = "*TOO LONG*"
+                t = "TOO LONG"
+        for a, b in dsubst:
+            t = t.replace(a, b)
         tr = self.fontres.render(t.upper(), True, display_rgb)
-        self.screen.blit(tr, (10, 0))
+        self.screen.blit(tr, (20, 0))
         pygame.display.flip()
 
 app = PyCalc()
