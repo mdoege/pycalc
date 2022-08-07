@@ -41,13 +41,26 @@ subst = (
 ("-",   "SUB"),
 ("+",   "ADD"),
 ("=",   "ENTER"),
-("**",  "POW"),
-("**2", "SQ"),
+("**",  "POWER"),
+("**2", "SQUARE"),
 ("C",   "CLEAR"),
 ("j",   "IMAG"),
 ("(",   "BEGIN"),
 (")",   "END"),
 (".",   "SEP"),
+("log10", "LOG 10"),
+("hex", "TO HEX"),
+("oct", "TO OCT"),
+("bin", "TO BIN"),
+("fah", "TO FAHR"),
+("cel", "TO CELS"),
+("deg", "TO DEG"),
+("rad", "TO RAD"),
+("0x", "HEX NUM"),
+("0o", "OCT NUM"),
+("0b", "BIN NUM"),
+("SCI", "SCIENT"),
+("sqrt", "SQ ROOT"),
 )
 
 # display text substitutions
@@ -208,7 +221,7 @@ class PyCalc:
                     if t == a: t = b
                 if t != "#":
                     tr = self.font.render(t.upper(), True, button_rgb)
-                    ox = max(0, boxx // 4)
+                    ox = LCW
                     oy = max(0, (boxy - tr.get_height()) // 2)
                     self.screen.blit(tr, (x * boxx + BORDER + ox, y * boxy + BORDER + oy))
         if len(self.inp) < MAXLEN:  # check if maximum digits exceeded
