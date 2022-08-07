@@ -11,8 +11,9 @@ RES = 760,600           # initial window size
 HSIZE, VSIZE = 6, 9     # button grid dimension (top row is for display)
 MAXLEN = 100            # maximum digits
 
-# font name
-fn = "Antonio-Regular.ttf"
+# font names
+fn1 = "Antonio-Regular.ttf"
+fn2 = "Antonio-Bold.ttf"
 
 # sound files
 pygame.mixer.init()
@@ -127,8 +128,8 @@ class PyCalc:
         self.screen = pygame.display.set_mode(self.res, pygame.RESIZABLE)
         pygame.display.set_caption('LCARS Calculator')
         self.screen.fill(BACKGROUND)
-        self.font = pygame.font.Font(fn, size_button)
-        self.fontres = pygame.font.Font(fn, size_disp)
+        self.font = pygame.font.Font(fn1, size_button)
+        self.fontres = pygame.font.Font(fn2, size_disp)
         self.clock = pygame.time.Clock()
         self.inp = ""
 
