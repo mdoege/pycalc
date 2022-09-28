@@ -1,8 +1,18 @@
-## PyCalc, a simple scientific calculator in PyGame
+## PyCalc, a collection of simple calculators in PyGame
 
-It works the same as the Python math module in interactive mode:
+Scientific calculators (uses binary):
 
-* This calculator uses binary, not decimal, so it has the usual rounding errors when comparing its results to a decimal calculator, e.g. "0.1 + 0.2" does not evaluate to exactly 0.3.
+    pycalc_light, pycalc_dark, pycalc_lcars
+
+Four-function calculator (uses decimal):
+
+    pycalc_desk
+
+The decimal calculator is useful to avoid the decimal->binary->decimal rounding errors of the binary calculators, e.g. for financial calculations. It also has memory (M+ to add, MR to recall value, AC to clear).
+
+The scientific calculators work the same as the Python math module in interactive mode:
+
+* They use binary numbers internally, not decimal, so it has the usual rounding errors when comparing its results to a decimal calculator, e.g. "0.1 + 0.2" does not evaluate to exactly 0.3.
 * The green buttons are for base conversion (hex/oct/bin) and entering numbers in other bases (0x, 0o, 0b).
 * The trigonometric functions all input or output angles in rad of course, so use "rad" and "deg" to convert accordingly.
 * "fah" and "cel" are Fahrenheit/Celsius conversion. E.g. "cel(100)" converts 100°F to Celsius. They also demonstrate how to add custom functions to the calculator.
@@ -30,6 +40,8 @@ The hex buttons (a to f) and "j" can also be used as these predefined variables 
 ![screenshot1](pycalc.png "PyCalc screenshot (dark/light versions)")
 
 ![screenshot2](pycalc2.png "PyCalc screenshot (LCARS version)")
+
+![screenshot3](pycalc3.png "PyCalc screenshot (decimal version)")
 
 ### License
 
