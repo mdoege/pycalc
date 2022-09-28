@@ -52,3 +52,4 @@ Public Domain / CC0
 * *Digital-7 Mono* by Sizenko Alexander
 * *Antonio* by Vernon Adams
 * *Fixedsys Excelsior 2.00* by Darien Valentine
+* *OCRA* by Matthew Skala
