@@ -1,6 +1,6 @@
 ## PyCalc, a collection of simple calculators in PyGame
 
-Scientific calculators (using binary internally):
+Three scientific calculators (using binary internally):
 
     pycalc_light, pycalc_dark, pycalc_lcars
 
@@ -8,9 +8,9 @@ Four-function calculator (using decimal internally, based on Python's *decimal* 
 
     pycalc_desk
 
-The decimal calculator is useful to avoid the rounding errors of the binary calculators due to their decimal➜binary➜decimal conversions, which is better for e.g. financial calculations. It also has memory (M+ to add, MR to recall value, AC to clear) and the comma is used as a decimal separator in results.
+The **decimal calculator** is useful to avoid the rounding errors of the binary calculators due to their decimal➜binary➜decimal conversions, which is better for e.g. financial calculations. It also has memory (M+ to add, MR to recall value, AC to clear) and the comma is used as a decimal separator in results.
 
-The scientific calculators work the same as the Python math module in interactive mode:
+The **scientific calculators** work the same as the Python math module in interactive mode:
 
 * They use binary numbers internally, not decimal, so it has the usual rounding errors when comparing its results to a decimal calculator, e.g. "0.1 + 0.2" does not evaluate to exactly 0.3.
 * The green buttons are for base conversion (hex/oct/bin) and entering numbers in other bases (0x, 0o, 0b).
